@@ -25,30 +25,17 @@ export default class Tooltip extends React.Component{
     };
   }
 
-  Wheel(e){
-    // var tooltip = document.getElementById("Tooltip");
-    // tooltip.textContent = ""
-    // tooltip.style.display = 'none'
-    // tooltip.style.opacity = 0;
-  }
-
-  TooltipMove(e){
-    console.log("Попали на подсказку")
-  }
-
   Move(e) {
     let element = e.target;
     var tooltip = document.getElementById("Tooltip");
     if(element.getAttribute("data-tooltip") && element != tooltip){
-        //tooltip.style.display = 'block'
+        tooltip.style.display = 'block'
         let text = element.getAttribute("data-tooltip");
         tooltip.textContent = text
-        
         tooltip.style.opacity = 0.9
+
         let coords = this.getCoords(element)
         var tooltipCoords = tooltip.getBoundingClientRect()
-
-
 
         let widthPage = Math.max(
           document.body.scrollWidth, document.documentElement.scrollWidth,
@@ -58,32 +45,24 @@ export default class Tooltip extends React.Component{
 
 
         if(widthPage  - coords.left - coords.width - tooltipCoords.width/2 < 0){
-          console.log('Покажи меня слева')
           //Показать слева
           tooltip.style.left = coords.left - tooltipCoords.width -8  + "px";
           tooltip.style.top = coords.top + + coords.height/2 - tooltipCoords.height/2 + "px";
 
         }else if(coords.top - coords.height <0  ){
-          console.log('Покажи меня снизу')
           //Показать снизу
           tooltip.style.left = coords.left + coords.width/2 - tooltipCoords.width/2 + "px";
           tooltip.style.top = coords.top + coords.height + tooltipCoords.height + "px";
         }else if( coords.left - coords.width < 0){
-          console.log('Покажи меня справа')
           //Показать справа
           tooltip.style.left = coords.left+ coords.width + 8 + "px";
           tooltip.style.top = coords.top + coords.height/2 - tooltipCoords.height/2 + "px";
         }else{
-          console.log('Покажи меня сверху')
           //Показать сверху
           tooltip.style.left = coords.left + coords.width/2 - tooltipCoords.width/2 + "px";
           tooltip.style.top = coords.top -tooltipCoords.height -8 + "px";
-        }
-        
+        }      
       }else{
-        tooltip.className = tooltip.className.replace(this.state.tooltipclass, '');
-        tooltip.textContent = ""
-        //tooltip.style.display = 'none'
         tooltip.style.opacity = 0;
       }
   }
