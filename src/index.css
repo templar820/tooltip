@@ -1,9 +1,59 @@
-.Tooltip{
-  font-size: 12px;
-  line-height: 10px;
+#Tooltip{
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 14px;
   text-align: center;
   background-color: black;
-  color: azure;
+  color: white;
   display: flex;
   justify-content: center;
+  position: absolute;
 }
+
+
+.tooltiptextBottom::after {
+  content: '';
+  position: absolute;
+  top: -0.75em;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltiptextTop::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltiptextRight::after {
+  content: '';
+  position: absolute;
+  top: 0.16em;
+  left: -0.4em;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color:  transparent black transparent transparent ;
+}
+
+
+.tooltiptextLeft::after {
+  content: '';
+  position: absolute;
+  top: 0.16em;
+  left: -0.4em;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color:   transparent black transparent transparent  ;
+}
+
+
